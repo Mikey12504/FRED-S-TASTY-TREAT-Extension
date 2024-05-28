@@ -35,6 +35,9 @@ private:
 
   // how many nodes are there in the list?
   unsigned count;
+
+  // the end of the list
+  Node *tail;
 };
 
 #endif // LINKEDLIST_H

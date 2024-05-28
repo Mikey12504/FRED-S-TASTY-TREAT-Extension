@@ -13,20 +13,23 @@ LinkedList::~LinkedList() {
   while (head != nullptr) {
     Node *temp = this->head;
     this->head = this->head->next;
+
     delete temp;
   }
 }
 
+// New update for doubly Linkedlist
 void LinkedList::append(Node *node) {
   if (!this->head) {
     this->head = node;
+    this->tail = node;
   } else {
-    Node *current = this->head;
-    while (current->next) {
-      current = current->next;
-    }
-    current->next = node;
+    this->tail->next = node;
+    node->prev = this->tail;
+    this->tail = node;
   }
+
+  node->next = nullptr; // Ensure the next pointer is null
   this->count++;
 }
 
@@ -45,25 +48,35 @@ Node *LinkedList::getById(std::string id) {
   return result;
 }
 
+// New update for doubly Linkedlist
 void LinkedList::remove(std::string id) {
-  Node *current = this->head;
-  Node *previous = nullptr;
+  Node *current = this->head; 
 
   // Traverse the list to find the node that matches the ID
   while (current != nullptr && current->data->id != id) {
-    previous = current;
     current = current->next;
   }
 
   // If the node is found
   if (current != nullptr) {
-    // If the node found is the head of the LinkedList
-    if (previous == nullptr) {
-      // Then set the next Node as the new head
+    // If the node found is the head of the Linklist
+    if (current == this->head) {
       head = current->next;
+      if (head != nullptr) {
+        head->prev = nullptr; // Update the previous pointer of the new head
+      }
     } else {
-      // If not, then redirect the pointer of the previous Node to skip a Node
-      previous->next = current->next;
+      current->prev->next = current->next; // Bypass the current node
+    }
+
+    // If the node found is the tail of the Linklist
+    if (current == this->tail) {
+      tail = current->prev;
+      if (tail != nullptr) {
+        tail->next = nullptr; // Update the next point of the new tail
+      }
+    } else if (current->next != nullptr) {
+      current->next->prev = current->prev; // Update the previous pointer of the next node
     }
 
     delete current;

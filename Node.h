@@ -28,9 +28,10 @@
  * a structure to represent a price. One of the problems with the floating
  * point formats in C++ like float and double is that they have minor issues
  * of inaccuracy due to rounding. In itemName.find('|') != std::string::nposthe
- *case of currency this really is not acceptable so we introduce our own type to
- *keep track of currency.
+ * case of currency this really is not acceptable so we introduce our own type to
+ * keep track of currency.
  **/
+
 class Price {
 public:
   // The dollar value, and the cents value for some price
@@ -105,6 +106,9 @@ public:
   FoodItem *data;
   // pointer to the next node in the list
   Node *next;
+
+  // pointer to the previous held in the list
+  Node *prev;
 };
 
 #endif // NODE_H

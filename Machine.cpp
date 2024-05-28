@@ -21,7 +21,7 @@ void Machine::start() {
   bool run = true;
 
   while (run) {
-    std::cout << "Main Menu:\n"
+    std::cout << "\033[37m" << "Main Menu:\n" << 
                  "\t1. Display Meal Options\n"
                  "\t2. Purchase Meal\n"
                  "\t3. Save and Exit\n"
@@ -90,7 +90,7 @@ void Machine::purchaseMeal() {
         // print out messages
         std::cout << "You have selected \"" << meal->data->name << " - "
                   << meal->data->description << "\""
-                  << ". This will cost you $ " << (float)priceAsCents / 100
+                  << ". This will cost you" << RED << " $" << (float)priceAsCents / 100 << WHITE // New update
                   << " .";
         std::cout << "Please hand over the money - type in the value of each "
                      "note/coin in cents."
@@ -118,7 +118,7 @@ void Machine::purchaseMeal() {
   while (run) {
     if (priceAsCents > 0) {
       // If the user hasn't fully paid for the item
-      std::cout << "You still need to give us: $ " << (float)priceAsCents / 100
+      std::cout << "You still need to give us " << RED << "$" <<(float)priceAsCents / 100 << WHITE// New update
                 << ": ";
     }
 
@@ -139,9 +139,9 @@ void Machine::purchaseMeal() {
             coin.count -= 1;
             // Print out the refund
             if (coin.denom < 100) {
-              std::cout << coin.denom << "c ";
+              std::cout << GREEN << coin.denom << "c " << WHITE; // New update
             } else {
-              std::cout << "$" << coin.denom / 100 << " ";
+              std::cout << GREEN << "$" << coin.denom / 100 << " " << WHITE; // New update
             }
           }
         }
@@ -222,9 +222,9 @@ void Machine::purchaseMeal() {
     for (int change : changes) {
       // Print the denomination
       if (change < 100) {
-        std::cout << change << "c ";
+        std::cout << GREEN << change << "c " << WHITE;  // New update
       } else {
-        std::cout << "$" << change / 100 << " ";
+        std::cout << GREEN << "$" << change / 100 << " " << WHITE; // New update
       }
     }
   }

@@ -70,9 +70,10 @@ std::string FoodItem::constructID(int id) {
 }
 
 Node::Node() {
-  // Create a new empty Node with data and next points to null
+  // Create a new empty Node with data and next points to null and 
   this->data = nullptr;
   this->next = nullptr;
+  this->prev = nullptr;
 };
 
 Node::~Node() {

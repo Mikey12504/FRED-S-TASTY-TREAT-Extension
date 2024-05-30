@@ -150,3 +150,7 @@ void LinkedList::sortByAlpha() {
     last = ptr1;
   } while (swapped);
 }
+
+bool LinkedList::isValidCategory(std::string cat) {
+  return !cat.empty() && cat.size() <= MAX_CAT_LEN;
+};

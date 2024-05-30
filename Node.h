@@ -104,11 +104,13 @@ public:
   ~Node();
   // pointer to the data held for the node
   FoodItem *data;
+
   // pointer to the next node in the list
   Node *next;
 
   // pointer to the previous held in the list
   Node *prev;
+
 };
 
 #endif // NODE_H

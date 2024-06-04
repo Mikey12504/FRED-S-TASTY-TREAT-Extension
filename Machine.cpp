@@ -319,7 +319,8 @@ void Machine::displayMeals() {
                 std::cout << EMPTY_SPACE;
             }
             std::cout << SEPARATOR << MONEY_SYMBOL;
-            std::cout << Helper::formatFloatToString(currentMeal->data->price.value(), longestInteger) << "\n";
+            std::cout << Helper::formatFloatToString(currentMeal->data->price.value(), 
+            longestInteger) << "\n";
             currentMeal = currentMeal->next;
         }
         currentCat = currentCat->next;

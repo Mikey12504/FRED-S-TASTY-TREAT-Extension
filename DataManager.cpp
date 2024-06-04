@@ -7,7 +7,8 @@
 #include <string>
 #include <vector>
 
-void DataManager::processLine(const std::string &line, LinkedList *linkedlist, int expectedTokens) {
+void DataManager::processLine(const std::string &line, 
+                LinkedList *linkedlist, int expectedTokens) {
     std::vector<std::string> tokens = {};
     std::vector<std::string> prices = {};
     Helper::splitString(line, tokens, "|");
@@ -21,7 +22,8 @@ void DataManager::processLine(const std::string &line, LinkedList *linkedlist, i
     }
 }
 
-Node* DataManager::createNode(const std::string &id, const std::string &name, const std::string &description, const std::string &priceStr) {
+Node* DataManager::createNode(const std::string &id, const std::string &name,
+                 const std::string &description, const std::string &priceStr) {
     std::vector<std::string> prices = {};
     Helper::splitString(Helper::floatToString(std::stof(priceStr), 2), prices, ".");
     
